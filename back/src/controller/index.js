@@ -45,23 +45,23 @@ api.get('/:id', (req, res) => {
     });
   });
 
-  // Put
-  api.post('/:id', (req, res) => {
+  // update
+  api.post('edit/:id', (req, res) => {
     Film.findOneAndUpdate({_id : req.params.id}, req.body, (err, film) => {
       if (err) {
         return res.send(err);
       }
-      res.json(film)
+      res.redirect('http://localhost:3000')
     })
   });
 
   // Delete
-  api.delete('/:id', (req, res) => {
-    Film.remove({_id : req.params.id}, (err, film) => {
+  api.get('/delete/:id', (req, res) => {
+    Film.findByIdAndRemove({_id : req.params.id}, (err, film) => {
       if (err) {
-        return res.send(err);
+        res.send(err);
       }
-      res.json({message: 'Supprimé avec succès'});
+      res.redirect('http://localhost:3000');
     });
   });
 
