@@ -15,6 +15,7 @@ class App extends Component {
         </header>
         <AddFilm/>
        <ShowFilm />
+       <p>coucou</p>
       </div>
     );
   }
